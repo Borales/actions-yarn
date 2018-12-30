@@ -16,24 +16,16 @@ function setup() {
 @test "npmrc location can be overridden" {
   export NPM_CONFIG_USERCONFIG=$( mktemp )
   export NPM_AUTH_TOKEN=NPM_AUTH_TOKEN
-  read -r -d '' TEST_STRING << EOM
-//registry.npmjs.org/:_authToken=NPM_AUTH_TOKEN
-registry=registry.npmjs.org
-EOM
   run $GITHUB_WORKSPACE/entrypoint.sh help
   [ "$status" -eq 0 ]
-  [ "$(cat $NPM_CONFIG_USERCONFIG)" = $TEST_STRING ]
+  [ "$(cat $NPM_CONFIG_USERCONFIG)" = $'//registry.npmjs.org/:_authToken=NPM_AUTH_TOKEN\nregistry=registry.npmjs.org' ]
 }
 
 @test "registry can be overridden" {
   export NPM_CONFIG_USERCONFIG=$( mktemp )
   export NPM_REGISTRY_URL=someOtherRegistry.someDomain.net
   export NPM_AUTH_TOKEN=NPM_AUTH_TOKEN
-  read -r -d '' TEST_STRING << EOM
-//someOtherRegistry.someDomain.net/:_authToken=NPM_AUTH_TOKEN
-registry=someOtherRegistry.someDomain.net
-EOM
   run $GITHUB_WORKSPACE/entrypoint.sh help
   [ "$status" -eq 0 ]
-  [ "$(cat $NPM_CONFIG_USERCONFIG)" = $TEST_STRING ]
+  [ "$(cat $NPM_CONFIG_USERCONFIG)" = $'//someOtherRegistry.someDomain.net/:_authToken=NPM_AUTH_TOKEN\nregistry=someOtherRegistry.someDomain.net' ]
 }
