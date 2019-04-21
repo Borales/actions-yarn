@@ -15,19 +15,19 @@ workflow "Build, Test, and Publish" {
 }
 
 action "Build" {
-  uses = "borales/actions-yarn@master"
+  uses = "Borales/actions-yarn@master"
   args = "install"
 }
 
 action "Test" {
   needs = "Build"
-  uses = "borales/actions-yarn@master"
+  uses = "Borales/actions-yarn@master"
   args = "test"
 }
 
 action "Publish" {
   needs = "Test"
-  uses = "borales/actions-yarn@master"
+  uses = "Borales/actions-yarn@master"
   args = "publish --access public"
   secrets = ["NPM_AUTH_TOKEN"]
 }
@@ -48,7 +48,7 @@ To authenticate with, and publish to, a registry other than `registry.npmjs.org`
 
 ```hcl
 action "Publish" {
-  uses = "borales/actions-yarn@master"
+  uses = "Borales/actions-yarn@master"
   args = "publish --access public"
   env = {
     NPM_REGISTRY_URL = "someOtherRegistry.someDomain.net"
