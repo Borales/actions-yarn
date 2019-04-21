@@ -1,6 +1,6 @@
-FROM node:10-slim
+FROM node:10
 
-LABEL version="1.0.0"
+LABEL version="1.1.0"
 LABEL repository="https://github.com/Borales/actions-yarn"
 LABEL homepage="https://github.com/Borales/actions-yarn"
 LABEL maintainer="Oleksandr Bordun <bordun.alexandr@gmail.com>"
