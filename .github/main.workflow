@@ -1,6 +1,6 @@
 workflow "Build and Publish" {
-  on = "push"
   resolves = "Docker Publish"
+  on = "push"
 }
 
 action "Shell Lint" {
@@ -46,4 +46,24 @@ action "Docker Publish" {
   needs = ["Docker Tag", "Docker Login"]
   uses = "actions/docker/cli@master"
   args = "push borales/yarn"
+}
+
+workflow "Pull Request" {
+  on = "pull_request"
+  resolves = ["Docker Lint [PR]", "Shell Lint [PR]", "Test [PR]"]
+}
+
+action "Docker Lint [PR]" {
+  uses = "docker://replicated/dockerfilelint"
+  args = "[\"Dockerfile\"]"
+}
+
+action "Shell Lint [PR]" {
+  uses = "actions/bin/shellcheck@master"
+  args = "entrypoint.sh"
+}
+
+action "Test [PR]" {
+  uses = "actions/bin/bats@master"
+  args = "test/*.bats"
 }
