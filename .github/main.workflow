@@ -5,7 +5,7 @@ workflow "Pull Request" {
 
 action "Docker Lint [PR]" {
   uses = "docker://replicated/dockerfilelint"
-  args = "[\"./Dockerfile\"]"
+  args = "Dockerfile"
 }
 
 action "Shell Lint [PR]" {
