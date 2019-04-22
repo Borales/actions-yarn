@@ -1,48 +1,3 @@
-action "Shell Lint" {
-  uses = "actions/bin/shellcheck@master"
-  args = "entrypoint.sh"
-}
-
-action "Test" {
-  uses = "actions/bin/bats@master"
-  args = "test/*.bats"
-}
-
-action "Docker Lint" {
-  uses = "docker://replicated/dockerfilelint"
-  args = ["Dockerfile"]
-}
-
-action "Build" {
-  needs = ["Shell Lint", "Test", "Docker Lint"]
-  uses = "actions/docker/cli@master"
-  args = "build -t yarn ."
-}
-
-action "Docker Tag" {
-  needs = ["Build"]
-  uses = "actions/docker/tag@master"
-  args = "yarn borales/yarn --no-latest"
-}
-
-action "Publish Filter" {
-  needs = ["Build"]
-  uses = "actions/bin/filter@master"
-  args = "branch master"
-}
-
-action "Docker Login" {
-  needs = ["Publish Filter"]
-  uses = "actions/docker/login@master"
-  secrets = ["DOCKER_USERNAME", "DOCKER_PASSWORD"]
-}
-
-action "Docker Publish" {
-  needs = ["Docker Tag", "Docker Login"]
-  uses = "actions/docker/cli@master"
-  args = "push borales/yarn"
-}
-
 workflow "Pull Request" {
   on = "pull_request"
   resolves = ["Docker Lint [PR]", "Shell Lint [PR]", "Test [PR]"]
@@ -64,7 +19,12 @@ action "Test [PR]" {
 }
 
 workflow "Build and Publish" {
-  resolves = ["Test [N]", "Docker Login [N]", "Docker Publish [N]", "Docker Lint [N]"]
+  resolves = [
+    "Docker Lint",
+    "Test",
+    "Docker Login",
+    "Docker Publish",
+  ]
   on = "push"
 }
 
@@ -73,44 +33,51 @@ action "Master Branch" {
   args = "branch master"
 }
 
-action "Docker Lint [N]" {
+action "Docker Lint" {
   uses = "docker://replicated/dockerfilelint"
   needs = ["Master Branch"]
-  args = "[\"Dockerfile\"]"
+  args = "[\"./Dockerfile\"]"
 }
 
-action "Shell Lint [N]" {
+action "Shell Lint" {
   uses = "actions/bin/shellcheck@master"
   needs = ["Master Branch"]
   args = "entrypoint.sh"
 }
 
-action "Test [N]" {
+action "Test" {
   uses = "actions/bin/bats@master"
   needs = ["Master Branch"]
   args = "test/*.bats"
 }
 
-action "Build [N]" {
+action "Build" {
   uses = "actions/docker/cli@master"
-  needs = ["Shell Lint [N]", "Test [N]", "Docker Lint [N]"]
+  needs = [
+    "Docker Lint",
+    "Test",
+    "Shell Lint",
+  ]
   args = "build -t yarn ."
 }
 
-action "Docker Tag [N]" {
+action "Docker Tag" {
   uses = "actions/docker/tag@master"
-  needs = ["Build [N]"]
   args = "yarn borales/yarn --no-latest"
+  needs = ["Build"]
 }
 
-action "Docker Login [N]" {
+action "Docker Login" {
   uses = "actions/docker/login@master"
-  needs = ["Build [N]"]
   secrets = ["DOCKER_PASSWORD", "DOCKER_USERNAME"]
+  needs = ["Build"]
 }
 
-action "Docker Publish [N]" {
+action "Docker Publish" {
   uses = "actions/docker/cli@master"
-  needs = ["Docker Tag [N]", "Docker Login [N]"]
+  needs = [
+    "Docker Login",
+    "Docker Tag",
+  ]
   args = "push borales/yarn"
 }
