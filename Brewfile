@@ -1,2 +1,0 @@
-brew "bats"
-brew "shellcheck"

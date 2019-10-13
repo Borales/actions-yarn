@@ -6,32 +6,23 @@ This Action for [yarn](https://yarnpkg.com) enables arbitrary actions with the `
 
 ## Usage
 
-An example workflow to build, test, and publish an npm package to the default public registry follows:
+An example workflow how to install packages via Yarn (using repository syntax):
 
-```hcl
-workflow "Build, Test, and Publish" {
-  on = "push"
-  resolves = ["Publish"]
-}
-
-action "Build" {
-  uses = "Borales/actions-yarn@master"
-  args = "install"
-}
-
-action "Test" {
-  needs = "Build"
-  uses = "Borales/actions-yarn@master"
-  args = "test"
-}
-
-action "Publish" {
-  needs = "Test"
-  uses = "Borales/actions-yarn@master"
-  args = "publish --access public"
-  secrets = ["NPM_AUTH_TOKEN"]
-}
+```yml
+name: CI
+on: [push]
+jobs:
+  build:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: borales/actions-yarn@2.0.0
+        with:
+          cmd: install
 ```
+
+> `cmd` value will be used as a command for Yarn
 
 ### Secrets
 
@@ -46,13 +37,9 @@ action "Publish" {
 
 To authenticate with, and publish to, a registry other than `registry.npmjs.org`:
 
-```hcl
-action "Publish" {
-  uses = "Borales/actions-yarn@master"
-  args = "publish --access public"
-  env = {
-    NPM_REGISTRY_URL = "someOtherRegistry.someDomain.net"
-  }
-  secrets = ["NPM_AUTH_TOKEN"]
-}
+```yml
+- uses: borales/actions-yarn@2.0.0
+  with:
+    auth-token: ${{ secrets.NPM_TOKEN }}
+    registry-url: someOtherRegistry.someDomain.net
 ```

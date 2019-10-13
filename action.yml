@@ -1,0 +1,18 @@
+name: 'GitHub Action for Yarn'
+description: 'Wraps the yarn CLI to enable common yarn commands'
+inputs:
+  cmd:
+    description: 'Yarn command'
+    required: true
+  auth-token:
+    description: 'NPM_AUTH_TOKEN'
+  registry-url:
+    description: 'NPM_REGISTRY_URL'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.cmd }}
+  env:
+    NPM_AUTH_TOKEN: ${{ inputs.auth-token }}
+    NPM_REGISTRY_URL: ${{ inputs.registry-url }}
