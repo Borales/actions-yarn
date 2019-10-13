@@ -22,6 +22,8 @@ jobs:
           cmd: install
 ```
 
+> `cmd` value will be used as a command for Yarn
+
 ### Secrets
 
 * `NPM_AUTH_TOKEN` - **Optional**. The token to use for authentication with the npm registry. Required for `yarn publish` ([more info](https://docs.npmjs.com/getting-started/working_with_tokens))
