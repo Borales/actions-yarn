@@ -12,9 +12,9 @@ jobs:
         with:
           node-version: 12
       - name: Docker Lint
-        uses: replicatedhq/dockerfilelint@master
+        uses: docker://replicated/dockerfilelint:latest
         with:
-          args: Dockerfile
+          args: ./Dockerfile
 #      - name: Shell Lint
 #        uses: actions/bin/shellcheck@master
 #        with:
