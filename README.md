@@ -35,13 +35,9 @@ jobs:
 
 To authenticate with, and publish to, a registry other than `registry.npmjs.org`:
 
-```hcl
-action "Publish" {
-  uses = "Borales/actions-yarn@master"
-  args = "publish --access public"
-  env = {
-    NPM_REGISTRY_URL = "someOtherRegistry.someDomain.net"
-  }
-  secrets = ["NPM_AUTH_TOKEN"]
-}
+```yml
+- uses: borales/actions-yarn@2.0.0
+  with:
+    auth-token: ${{ secrets.NPM_TOKEN }}
+    registry-url: someOtherRegistry.someDomain.net
 ```

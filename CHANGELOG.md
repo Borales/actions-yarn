@@ -3,6 +3,7 @@
 ## 2.0.0 (14 Oct 2019)
 
 - Migrated to the latest Github Action syntax
+- Using `node:10.16-alpine` as base image
 
 ## 1.1.0 (22 Apr 2019)
 
