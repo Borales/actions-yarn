@@ -4,11 +4,15 @@ inputs:
   cmd:
     description: 'Yarn command'
     required: true
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  auth-token:
+    description: 'NPM_AUTH_TOKEN'
+  registry-url:
+    description: 'NPM_REGISTRY_URL'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.cmd }}
+  env:
+    NPM_AUTH_TOKEN: ${{ inputs.auth-token }}
+    NPM_REGISTRY_URL: ${{ inputs.registry-url }}
