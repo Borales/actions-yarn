@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: borales/actions-yarn@2.0.0
+      - uses: borales/actions-yarn@v2.0.0
         with:
           cmd: install
 ```
@@ -38,7 +38,7 @@ jobs:
 To authenticate with, and publish to, a registry other than `registry.npmjs.org`:
 
 ```yml
-- uses: borales/actions-yarn@2.0.0
+- uses: borales/actions-yarn@v2.0.0
   with:
     auth-token: ${{ secrets.NPM_TOKEN }}
     registry-url: someOtherRegistry.someDomain.net
