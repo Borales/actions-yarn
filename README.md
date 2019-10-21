@@ -19,13 +19,13 @@ jobs:
       - uses: actions/checkout@v1
       - uses: borales/actions-yarn@v2.0.0
         with:
-          cmd: install
+          cmd: install # will run `yarn install` command
       - uses: borales/actions-yarn@v2.0.0
         with:
-          cmd: build
+          cmd: build # will run `yarn build` command
       - uses: borales/actions-yarn@v2.0.0
         with:
-          cmd: test
+          cmd: test # will run `yarn test` command
 ```
 
 > `cmd` value will be used as a command for Yarn
