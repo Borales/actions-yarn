@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 2.0.1 (6 Nov 2019)
+## 2.0.2 (6 Nov 2019)
 
 - Added Git to the Docker image
 
