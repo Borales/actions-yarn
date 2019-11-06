@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.0.1 (6 Nov 2019)
+
+- Added Git to the Docker image
+
 ## 2.0.0 (14 Oct 2019)
 
 - Migrated to the latest Github Action syntax
