@@ -1,4 +1,4 @@
-FROM node:10.16-alpine
+FROM node:lts-alpine
 
 RUN apk add --no-cache git
 COPY "entrypoint.sh" "/entrypoint.sh"
