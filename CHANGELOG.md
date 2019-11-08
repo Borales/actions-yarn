@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.1.0 (8 Nov 2019)
+
+- Switching to `node:lts` docker image
+
 ## 2.0.2 (6 Nov 2019)
 
 - Added Git to the Docker image
