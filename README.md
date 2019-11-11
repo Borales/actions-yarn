@@ -4,6 +4,9 @@
 
 This Action for [yarn](https://yarnpkg.com) enables arbitrary actions with the `yarn` command-line client, including testing packages and publishing to a registry.
 
+> **Please keep in mind** that this Action was originally written for GitHub Actions beta (when Docker was the only way of doing things).
+Consider using [actions/setup-node](https://github.com/actions/setup-node) to work with Yarn. This repository will be mostly supporting the existing flows.
+
 ## Usage
 
 An example workflow how to install packages via Yarn (using repository syntax):
