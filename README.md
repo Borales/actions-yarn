@@ -1,6 +1,6 @@
 # GitHub Actions for Yarn
 
-> Look [https://github.com/actions/npm](github.com/actions/npm) for more details.
+> Look [github.com/actions/npm](https://github.com/actions/npm) for more details.
 
 This Action for [yarn](https://yarnpkg.com) enables arbitrary actions with the `yarn` command-line client, including testing packages and publishing to a registry.
 
