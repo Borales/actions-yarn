@@ -1,6 +1,6 @@
 # GitHub Actions for Yarn
 
-> Look [github.com/actions/npm](https://github.com/actions/npm) for more details.
+> Look [github.com/actions/setup-node](https://github.com/actions/setup-node) for more details.
 
 This Action for [yarn](https://yarnpkg.com) enables arbitrary actions with the `yarn` command-line client, including testing packages and publishing to a registry.
 
@@ -35,7 +35,9 @@ jobs:
 
 ### Secrets
 
-* `NPM_AUTH_TOKEN` - **Optional**. The token to use for authentication with the npm registry. Required for `yarn publish` ([more info](https://docs.npmjs.com/getting-started/working_with_tokens))
+* `
+
+_AUTH_TOKEN` - **Optional**. The token to use for authentication with the npm registry. Required for `yarn publish` ([more info](https://docs.npmjs.com/getting-started/working_with_tokens))
 
 ### Environment variables
 
