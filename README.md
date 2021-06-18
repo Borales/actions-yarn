@@ -20,13 +20,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: borales/actions-yarn@v2.0.0
+      - uses: borales/actions-yarn@v2.3.0
         with:
           cmd: install # will run `yarn install` command
-      - uses: borales/actions-yarn@v2.0.0
+      - uses: borales/actions-yarn@v2.3.0
         with:
           cmd: build # will run `yarn build` command
-      - uses: borales/actions-yarn@v2.0.0
+      - uses: borales/actions-yarn@v2.3.0
         with:
           cmd: test # will run `yarn test` command
 ```
@@ -49,7 +49,7 @@ _AUTH_TOKEN` - **Optional**. The token to use for authentication with the npm re
 To authenticate with, and publish to, a registry other than `registry.npmjs.org`:
 
 ```yml
-- uses: borales/actions-yarn@v2.0.0
+- uses: borales/actions-yarn@v2.3.0
   with:
     auth-token: ${{ secrets.NPM_TOKEN }}
     registry-url: someOtherRegistry.someDomain.net
