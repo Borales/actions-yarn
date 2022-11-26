@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 4.0.0 (26 Nov 2022)
+
+- Migrated to Actions toolkit
+
 ## 3.0.0 (8 Jun 2022)
 
 - Migrating to Python3 (thanks to [@richard-chim](https://github.com/richard-chim))
