@@ -26,7 +26,6 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         (0, core_1.debug)(`Running "${cmd}" command`);
         yield (0, run_1.run)(cmd, { cwd });
-        (0, core_1.setOutput)(cmd, 'Done');
     }
     catch (error) {
         if (error instanceof Error)
