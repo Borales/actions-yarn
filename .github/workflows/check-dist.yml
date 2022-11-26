@@ -7,10 +7,10 @@ on:
       - master
       - migration # temp
     paths-ignore:
-      - "**.md"
+      - '**.md'
   pull_request:
     paths-ignore:
-      - "**.md"
+      - '**.md'
 
 jobs:
   check-dist:
@@ -41,7 +41,7 @@ jobs:
         id: diff
 
       # If index.js was different than expected, upload the expected version as an artifact
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         if: ${{ failure() && steps.diff.conclusion == 'failure' }}
         with:
           name: dist
