@@ -1,12 +1,14 @@
 import {debug, getInput, setFailed, getState} from '@actions/core'
 import {ensureYarnIsInstalled} from './yarn'
 import {run} from './run'
+import {resolve} from 'path'
 
 const main = async () => {
   await ensureYarnIsInstalled()
 
   const cmd: string = getInput('cmd', {required: true})
-  const cwd: string = getState('repositoryPath')
+  const dir: string = getInput('dir')
+  const cwd: string = resolve(getState('repositoryPath'), dir || '')
 
   try {
     debug(`Running "${cmd}" command`)
