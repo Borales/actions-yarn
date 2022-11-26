@@ -19,10 +19,12 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core_1 = __nccwpck_require__(186);
 const yarn_1 = __nccwpck_require__(820);
 const run_1 = __nccwpck_require__(884);
+const path_1 = __nccwpck_require__(17);
 const main = () => __awaiter(void 0, void 0, void 0, function* () {
     yield (0, yarn_1.ensureYarnIsInstalled)();
     const cmd = (0, core_1.getInput)('cmd', { required: true });
-    const cwd = (0, core_1.getState)('repositoryPath');
+    const dir = (0, core_1.getInput)('dir');
+    const cwd = (0, path_1.resolve)((0, core_1.getState)('repositoryPath'), dir || '');
     try {
         (0, core_1.debug)(`Running "${cmd}" command`);
         yield (0, run_1.run)(cmd, { cwd });

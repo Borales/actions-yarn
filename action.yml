@@ -8,13 +8,10 @@ inputs:
   cmd:
     description: 'Yarn command'
     required: true
-#  auth-token:
-#    description: 'NPM_AUTH_TOKEN'
-#  registry-url:
-#    description: 'NPM_REGISTRY_URL'
+  dir:
+    description: 'Yarn sub-folder (if needed)'
+    required: false
+    default: ''
 runs:
   using: 'node16'
   main: 'dist/index.js'
-#  env:
-#    NPM_AUTH_TOKEN: ${{ inputs.auth-token }}
-#    NPM_REGISTRY_URL: ${{ inputs.registry-url }}
