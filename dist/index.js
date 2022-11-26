@@ -21,11 +21,12 @@ const yarn_1 = __nccwpck_require__(820);
 const run_1 = __nccwpck_require__(884);
 const main = () => __awaiter(void 0, void 0, void 0, function* () {
     yield (0, yarn_1.ensureYarnIsInstalled)();
-    const cmd = (0, core_1.getInput)("cmd", { required: true });
+    const cmd = (0, core_1.getInput)('cmd', { required: true });
+    const cwd = (0, core_1.getState)('repositoryPath');
     try {
         (0, core_1.debug)(`Running "${cmd}" command`);
-        yield (0, run_1.run)(cmd);
-        (0, core_1.setOutput)(cmd, "Done");
+        yield (0, run_1.run)(cmd, { cwd });
+        (0, core_1.setOutput)(cmd, 'Done');
     }
     catch (error) {
         if (error instanceof Error)
@@ -38,7 +39,7 @@ main();
 /***/ }),
 
 /***/ 884:
-/***/ (function(__unused_webpack_module, exports) {
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
 
@@ -53,7 +54,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.run = void 0;
-const run = (cmd) => __awaiter(void 0, void 0, void 0, function* () { });
+const exec_1 = __nccwpck_require__(514);
+const run = (cmd, { cwd }) => __awaiter(void 0, void 0, void 0, function* () {
+    yield (0, exec_1.exec)('yarn', [cmd], { cwd });
+});
 exports.run = run;
 
 
@@ -80,17 +84,18 @@ const exec_1 = __nccwpck_require__(514);
 const io_1 = __nccwpck_require__(436);
 const ensureYarnIsInstalled = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield (0, io_1.which)("yarn", true);
+        yield (0, io_1.which)('yarn', true);
     }
     catch (e) {
-        yield (0, exec_1.exec)("npm install --global yarn");
+        yield (0, exec_1.exec)('npm install --global yarn');
     }
     const [{ stdout: yarnVersion }, { stdout: nodeVersion }] = yield Promise.all([
-        (0, exec_1.getExecOutput)("yarn", ["--version"], { silent: true }),
-        (0, exec_1.getExecOutput)("node", ["--version"], { silent: true }),
+        (0, exec_1.getExecOutput)('yarn', ['--version'], { silent: true }),
+        (0, exec_1.getExecOutput)('node', ['--version'], { silent: true })
     ]);
     (0, core_1.debug)(`Node ${nodeVersion.trim()} detected`);
     (0, core_1.debug)(`Yarn v${yarnVersion.trim()} detected`);
+    (0, core_1.setOutput)('yarn-version', yarnVersion.trim());
 });
 exports.ensureYarnIsInstalled = ensureYarnIsInstalled;
 
