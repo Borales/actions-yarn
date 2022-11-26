@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 4.1.0 (26 Nov 2022)
+
+- Added `dir` option
+
 ## 4.0.0 (26 Nov 2022)
 
 - Migrated to Actions toolkit

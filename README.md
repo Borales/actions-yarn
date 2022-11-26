@@ -37,8 +37,16 @@ jobs:
         uses: borales/actions-yarn@v4
         with:
           cmd: test # will run `yarn test` command
+
+      - name: Run test in sub-folder
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: test
+          dir: 'frontend' # will run `yarn test` in `frontend` sub folder
 ```
 
 > `cmd` value will be used as a command for Yarn
+>
+> `dir` value will be used for Yarn `cwd`
 
 More information about [private registry setup](https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#use-private-packages).
