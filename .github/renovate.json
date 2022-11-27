@@ -1,0 +1,13 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:base", "group:typescript-eslintMonorepo"],
+  "labels": ["dependencies"],
+  "rangeStrategy": "bump",
+  "reviewers": ["borales"],
+  "packageRules": [
+    {
+      "matchSourceUrlPrefixes": ["https://github.com/actions/toolkit"],
+      "groupName": "GitHub Actions Toolkit"
+    }
+  ]
+}
