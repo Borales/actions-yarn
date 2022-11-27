@@ -6,11 +6,14 @@ This Action for [yarn](https://yarnpkg.com) enables arbitrary actions with the `
 
 ## Usage
 
+> It is required to run `actions/setup-node@v3` before `borales/actions-yarn` in order to setup the desired node version.
+
 An example workflow how to install packages via Yarn (using repository syntax):
 
 ```yml
 name: CI
 on: [push]
+
 jobs:
   build:
     name: Test
