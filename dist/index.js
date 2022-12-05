@@ -57,7 +57,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.run = void 0;
 const exec_1 = __nccwpck_require__(514);
 const run = (cmd, { cwd }) => __awaiter(void 0, void 0, void 0, function* () {
-    yield (0, exec_1.exec)('yarn', [cmd], { cwd });
+    yield (0, exec_1.exec)('yarn', cmd.split(' '), { cwd });
 });
 exports.run = run;
 

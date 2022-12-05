@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 4.2.0 (5 Dev 2022)
+
+- Added proper support for multiple arguments
+
 ## 4.1.0 (26 Nov 2022)
 
 - Added `dir` option
