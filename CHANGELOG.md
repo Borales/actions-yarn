@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 4.2.0 (5 Dev 2022)
+## 4.2.0 (5 Dec 2022)
 
 - Added proper support for multiple arguments
 
