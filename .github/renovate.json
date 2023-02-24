@@ -4,6 +4,7 @@
   "labels": ["dependencies"],
   "rangeStrategy": "bump",
   "reviewers": ["borales"],
+  "postUpdateOptions": ["yarnDedupeHighest"],
   "packageRules": [
     {
       "matchSourceUrlPrefixes": ["https://github.com/actions/toolkit"],
