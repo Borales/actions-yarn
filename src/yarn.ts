@@ -2,7 +2,7 @@ import {debug, setOutput} from '@actions/core'
 import {exec, getExecOutput} from '@actions/exec'
 import {which} from '@actions/io'
 
-export const ensureYarnIsInstalled = async () => {
+export const ensureYarnIsInstalled = async (): Promise<void> => {
   try {
     await which('yarn', true)
   } catch (e) {

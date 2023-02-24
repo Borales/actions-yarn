@@ -3,7 +3,7 @@ import {ensureYarnIsInstalled} from './yarn'
 import {run} from './run'
 import {resolve} from 'path'
 
-const main = async () => {
+const main = async (): Promise<void> => {
   await ensureYarnIsInstalled()
 
   const cmd: string = getInput('cmd', {required: true})
