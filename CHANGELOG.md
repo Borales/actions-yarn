@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 5.0.0 (3 Feb 2024)
+
+- Switching to `node20`
+
 ## 4.2.0 (5 Dec 2022)
 
 - Added proper support for multiple arguments
