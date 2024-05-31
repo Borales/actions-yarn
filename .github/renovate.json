@@ -10,5 +10,8 @@
       "matchSourceUrlPrefixes": ["https://github.com/actions/toolkit"],
       "groupName": "GitHub Actions Toolkit"
     }
-  ]
+  ],
+  "nvm": {
+    "enabled": false
+  }
 }
