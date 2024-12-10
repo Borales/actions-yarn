@@ -1,5 +1,7 @@
 # GitHub Actions for Yarn
 
+This GitHub Action is currently compatible with Yarn 1.x only.
+
 > Look [github.com/actions/setup-node](https://github.com/actions/setup-node) for more details.
 
 This Action for [yarn](https://yarnpkg.com) enables arbitrary actions with the `yarn` command-line client, including testing packages and publishing to a registry.
