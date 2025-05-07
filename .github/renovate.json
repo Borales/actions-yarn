@@ -1,17 +1,10 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended", "group:typescript-eslintMonorepo"],
-  "labels": ["dependencies"],
-  "rangeStrategy": "bump",
-  "reviewers": ["borales"],
-  "postUpdateOptions": ["yarnDedupeHighest"],
+  "extends": ["github>Borales/renovate-config"],
   "packageRules": [
     {
       "groupName": "GitHub Actions Toolkit",
       "matchSourceUrls": ["https://github.com/actions/toolkit{/,}**"]
     }
-  ],
-  "nvm": {
-    "enabled": false
-  }
+  ]
 }
