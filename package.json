@@ -12,9 +12,9 @@
     "all": "yarn build && yarn format && yarn lint && yarn package && yarn test"
   },
   "dependencies": {
-    "@actions/core": "^1.11.1",
-    "@actions/exec": "^1.1.1",
-    "@actions/io": "^1.1.3"
+    "@actions/core": "^2.0.2",
+    "@actions/exec": "^2.0.0",
+    "@actions/io": "^2.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.19.27",
